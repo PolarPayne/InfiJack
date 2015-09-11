@@ -31,20 +31,15 @@
                 <version>3.2</version>
             </plugin>
             <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>cobertura-maven-plugin</artifactId>
-                <version>2.7</version>
-            </plugin>
-            <plugin>
                 <groupId>org.pitest</groupId>
                 <artifactId>pitest-maven</artifactId>
                 <version>1.1.4</version>
                 <configuration>
                 <targetClasses>
-                    <param>ristinolla.logiikka.*</param>
+                    <param>logic.*</param>
                 </targetClasses>
                 <targetTests>
-                    <param>ristinolla.logiikka.*</param>
+                    <param>logic.*</param>
                 </targetTests>
             </configuration>
             </plugin>
