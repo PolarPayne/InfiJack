@@ -11,11 +11,14 @@ public class Game {
     
     public Game() {
         this.players = new ArrayList<>();
-        this.board = new Board();
+        this.board = new Board(1);
     }
 
     public void addPlayer(HumanPlayer humanPlayer) {
+        humanPlayer.setBoard(this.board);
         this.players.add(humanPlayer);
+        
+        this.board.setPadding(this.board.getPadding() + 1);
     }
     
     private void randomizeTurnOrder() {
@@ -23,7 +26,12 @@ public class Game {
     }
 
     public void start() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        while (true) {
+            for (Player p : this.players) {
+                this.board.add(p.move());
+                if (this.over()) return;
+            }
+        }
     }
 
     public boolean over() {

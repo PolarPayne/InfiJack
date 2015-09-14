@@ -1,7 +1,8 @@
 package logic.players;
 
-import logic.util.Point;
+import logic.Mark;
 
 public interface Player {
-    public Point move();
+
+    public Mark move();
 }

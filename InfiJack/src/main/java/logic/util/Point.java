@@ -1,9 +1,16 @@
 package logic.util;
 
 public class Point {
+
     private final int x;
     private final int y;
-    
+
+    /**
+     * Immutable point in 2D space.
+     * 
+     * @param x X coordinate
+     * @param y Y coordinate
+     */
     public Point(int x, int y) {
         this.x = x;
         this.y = y;
@@ -33,5 +40,13 @@ public class Point {
             return false;
         }
         return true;
+    }
+
+    public int getX() {
+        return this.x;
+    }
+
+    public int getY() {
+        return this.y;
     }
 }
