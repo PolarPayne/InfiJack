@@ -44,7 +44,7 @@ public class Point {
     
     @Override
     public String toString() {
-        return "x: " + this.x + ", y:" + this.y;
+        return "x: " + this.x + ", y: " + this.y;
     }
 
     public int getX() {
