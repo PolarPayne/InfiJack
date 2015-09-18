@@ -15,10 +15,10 @@ public class Move extends Point {
     public char getMark() {
         return this.player.getMark();
     }
-    
+
     @Override
     public String toString() {
-        return this.getMark() + " = x: " + this.getX() + ", y: " + this.getY();
+        return "[x:" + this.getX() + ",y:" + this.getY() + "]:" + this.getMark();
     }
 
 }

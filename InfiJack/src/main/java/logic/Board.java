@@ -40,9 +40,11 @@ public class Board {
         StringBuilder sb = new StringBuilder();
         sb.append("bounds:\n\t")
                 .append(this.bounds.getLeftTop().toString()).append("\n\t")
-                .append(this.bounds.getRightBottom().toString()).append("\n");
-        for (Point i : moves) {
-            sb.append(i).append("\n");
+                .append(this.bounds.getRightBottom().toString());
+        
+        if (!this.moves.isEmpty()) sb.append("\n").append("moves:");
+        for (Point i : this.moves) {
+            sb.append("\n\t").append(i);
         }
         return sb.toString();
     }
