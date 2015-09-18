@@ -1,41 +1,47 @@
 package logic;
 
+import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Deque;
+import java.util.List;
 import logic.players.HumanPlayer;
 import logic.players.Player;
+import ui.UI;
 
 public class Game {
-    private final ArrayList<Player> players;
+
+    private final Deque<Player> players;
     private final Board board;
-    
-    public Game() {
-        this.players = new ArrayList<>();
+    private static final char[] marks = {'X', 'O'};
+
+    public Game(int players) {
         this.board = new Board(1);
-    }
-
-    public void addPlayer(HumanPlayer humanPlayer) {
-        humanPlayer.setBoard(this.board);
-        this.players.add(humanPlayer);
         
-        this.board.setPadding(this.board.getPadding() + 1);
-    }
-    
-    private void randomizeTurnOrder() {
-        Collections.shuffle(players);
+        List<Player> playerList = new ArrayList<>();
+        for (int i = 0; i < players; i++) {
+            playerList.add(new HumanPlayer(Game.marks[i]));
+            this.board.setPadding(this.board.getPadding() + 1);
+        }
+        //Deque cannot be shuffled
+        Collections.shuffle(playerList);
+        
+        this.players = new ArrayDeque<>(playerList);
     }
 
-    public void start() {
-        while (true) {
-            for (Player p : this.players) {
-                this.board.add(p.move());
-                if (this.over()) return;
-            }
-        }
+    public boolean turn(UI ui) {        
+        this.board.add(this.players.getFirst().move(ui));
+        this.players.addLast(this.players.removeFirst());
+        return this.over();
     }
 
     public boolean over() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return false; //TODO implement game over checking
     }
     
+    @Override
+    public String toString() {
+        return this.board.toString();
+    }
+
 }

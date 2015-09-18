@@ -1,11 +1,11 @@
 package logic.players;
 
-import logic.Board;
-import logic.Mark;
+import logic.Move;
+import ui.UI;
 
 public interface Player {
 
-    public Mark move();
+    public Move move(UI ui);
 
-    public void setBoard(Board board);
+    public char getMark();
 }

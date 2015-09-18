@@ -41,6 +41,11 @@ public class Point {
         }
         return true;
     }
+    
+    @Override
+    public String toString() {
+        return "x: " + this.x + ", y:" + this.y;
+    }
 
     public int getX() {
         return this.x;

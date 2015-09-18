@@ -16,9 +16,9 @@ public class RectangleTest {
 
     @Test
     public void testPointInsideRectangleNontrivialTwoPoints() {
-        Rectangle instance = new Rectangle(100, 100, -100, -100);
-        Point p1 = new Point(100, 100);
-        Point p2 = new Point(-100, -100);
+        Rectangle instance = new Rectangle(-100, 100, 100, -100);
+        Point p1 = new Point(-100, 100);
+        Point p2 = new Point(100, -100);
         assertTrue(instance.contains(p1));
         assertTrue(instance.contains(p2));
     }

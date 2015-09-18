@@ -17,7 +17,7 @@ public class Rectangle {
     }
 
     public boolean contains(Point p) {
-        if (p.getX() <= this.x1 && p.getX() >= this.x2) {
+        if (p.getX() >= this.x1 && p.getX() <= this.x2) {
             if (p.getY() <= this.y1 && p.getY() >= this.y2) {
                 return true;
             }
