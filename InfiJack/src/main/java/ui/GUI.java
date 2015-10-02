@@ -4,64 +4,92 @@ import java.awt.Graphics;
 import javax.swing.JFrame;
 import logic.Board;
 import logic.Game;
+import logic.Move;
 import logic.util.Directions;
+import logic.util.Point;
+import logic.util.Rectangle;
 import ui.listeners.KeyboardListener;
 
 public class GUI extends JFrame {
+
     private final Game game;
     private final Board board;
     private final Camera camera;
-    
+
     private final int width = 640;
     private final int height = 480;
-    
-    private final int scale = 16;
+
+    private final int scale = 32;
     private final int size = 32;
-    
+
     public GUI(Game game) {
         this.game = game;
         this.board = game.getBoard();
-        
+
         this.setTitle("InfiJack");
         this.setSize(this.width, this.height);
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        
+
         this.setResizable(false);
-        
+
         this.camera = new Camera(this.scale);
-        
+
         this.addKeyListener(new KeyboardListener(this));
-        
+
         this.setVisible(true);
     }
-    
+
     @Override
     public void paint(Graphics g) {
         super.paintComponents(g);
-                
+
         drawBounds(g);
         drawMarks(g);
         drawSelector(g);
     }
-    
+
     private void drawBounds(Graphics g) {
-        int tlX = this.camera.worldToScreen(this.board.getBounds().getLeftTop()).getX() - size/2;
-        int tlY = this.camera.worldToScreen(this.board.getBounds().getLeftTop()).getY() - size/2;
-        int brX = this.camera.worldToScreen(this.board.getBounds().getRightBottom()).getX() + size/2;
-        int brY = this.camera.worldToScreen(this.board.getBounds().getRightBottom()).getY() + size/2;
-        int w = brX - tlX;
-        int h = brY - tlY;
-        
-        g.drawRect(this.width/2 + tlX, this.height/2 + tlY, w, h);
+        Rectangle b = this.board.getBounds();
+        Point lt = this.camera.worldToScreen(b.getLeftTop());
+        Point rb = this.camera.worldToScreen(b.getRightBottom());
+
+        int ltX = lt.getX() - size / 2;
+        int ltY = lt.getY() - size / 2;
+        int rbX = rb.getX() + size / 2;
+        int rbY = rb.getY() + size / 2;
+
+        int w = rbX - ltX;
+        int h = rbY - ltY;
+
+        g.drawRect(this.width / 2 + ltX, this.height / 2 + ltY, w, h);
     }
-    
+
     private void drawMarks(Graphics g) {
-        //TODO draw marks on the field
+        for (Point p : this.board.getMoves()) {
+            Move m = (Move) p;
+            Point pp = this.camera.worldToScreen(m);
+            int x = pp.getX() - size/2;
+            int y = pp.getY() - size/2;
+            
+            switch (m.getMark()) {
+                case 'X':
+                    g.drawRect(this.width/2 + x, this.height/2 + y, size, size);
+                    break;
+                case 'O':
+                    g.drawOval(this.width/2 + x, this.height/2 + y, size, size);
+                    break;
+            }
+        }
     }
 
     private void drawSelector(Graphics g) {
-        //TODO draw the selector
+        Point p = this.camera.worldToScreen(this.camera.getX(), this.camera.getY());
+        int s = size / 2;
+        int tlX = p.getX() - s;
+        int tlY = p.getY() - s;
+
+        g.drawOval(this.width / 2 + tlX - 4, this.height / 2 + tlY - 4, size + 8, size + 8);
     }
 
     public void setMark() {
@@ -73,6 +101,9 @@ public class GUI extends JFrame {
     }
 
     public void moveCursor(Directions direction) {
-        this.camera.move(direction);
+        Point p = this.camera.getPoint().moved(direction);
+        if (this.board.getBounds().contains(p)) {
+            this.camera.setXY(p);
+        }
     }
 }

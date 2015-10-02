@@ -54,4 +54,18 @@ public class Point {
     public int getY() {
         return this.y;
     }
+
+    public Point moved(Directions direction) {
+        switch (direction) {
+            case UP:
+                return new Point(this.x, this.y-1);
+            case RIGHT:
+                return new Point(this.x+1, this.y);
+            case DOWN:
+                return new Point(this.x, this.y+1);
+            case LEFT:
+                return new Point(this.x-1, this.y);
+        }
+        return null;
+    }
 }
