@@ -49,4 +49,11 @@ public class Board {
         return sb.toString();
     }
 
+    public Set<Point> getMoves() {
+        return this.moves;
+    }
+    
+    public Rectangle getBounds() {
+        return this.bounds;
+    }
 }

@@ -83,4 +83,12 @@ public class Rectangle {
     public Point getRightBottom() {
         return new Point(this.x2, this.y2);
     }
+    
+    public int getWidth() {
+        return this.x2 - this.x1;
+    }
+    
+    public int getHeight() {
+        return this.y2 - this.y1;
+    }
 }

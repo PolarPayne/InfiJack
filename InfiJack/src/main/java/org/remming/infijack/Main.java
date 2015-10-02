@@ -1,12 +1,10 @@
 package org.remming.infijack;
 
 import logic.Game;
-import ui.CLI;
-import ui.UI;
+import ui.GUI;
 
 public class Main {
     public static void main(String[] args) {
-        UI cli = new CLI(new Game(2));
-        cli.start();
+        GUI gui = new GUI(new Game(2));
     }
 }

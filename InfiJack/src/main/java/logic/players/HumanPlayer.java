@@ -1,7 +1,7 @@
 package logic.players;
 
 import logic.Move;
-import ui.UI;
+import ui.GUI;
 
 public class HumanPlayer implements Player {
     private final char mark;
@@ -12,12 +12,12 @@ public class HumanPlayer implements Player {
     }
 
     @Override
-    public Move move(UI ui) {
-        return ui.getMove(this);
+    public char getMark() {
+        return this.mark;
     }
 
     @Override
-    public char getMark() {
-        return this.mark;
+    public Move move(int x, int y) {
+        return new Move(x, y, this);
     }
 }

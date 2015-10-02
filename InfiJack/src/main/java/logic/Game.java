@@ -7,7 +7,6 @@ import java.util.Deque;
 import java.util.List;
 import logic.players.HumanPlayer;
 import logic.players.Player;
-import ui.UI;
 
 public class Game {
 
@@ -29,12 +28,6 @@ public class Game {
         this.players = new ArrayDeque<>(playerList);
     }
 
-    public boolean turn(UI ui) {        
-        this.board.add(this.players.getFirst().move(ui));
-        this.players.addLast(this.players.removeFirst());
-        return this.over();
-    }
-
     public boolean over() {
         return false; //TODO implement game over checking
     }
@@ -42,6 +35,15 @@ public class Game {
     @Override
     public String toString() {
         return this.board.toString();
+    }
+
+    public void setMark(int x, int y) {
+        this.board.add(this.players.getFirst().move(x, y));
+        this.players.addLast(this.players.removeFirst());
+    }
+
+    public Board getBoard() {
+        return this.board;
     }
 
 }
