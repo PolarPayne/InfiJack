@@ -46,7 +46,14 @@ public class GUI extends JFrame {
     }
     
     private void drawBounds(Graphics g) {
-        //TODO draw bounds of the area
+        int tlX = this.camera.worldToScreen(this.board.getBounds().getLeftTop()).getX() - size/2;
+        int tlY = this.camera.worldToScreen(this.board.getBounds().getLeftTop()).getY() - size/2;
+        int brX = this.camera.worldToScreen(this.board.getBounds().getRightBottom()).getX() + size/2;
+        int brY = this.camera.worldToScreen(this.board.getBounds().getRightBottom()).getY() + size/2;
+        int w = brX - tlX;
+        int h = brY - tlY;
+        
+        g.drawRect(this.width/2 + tlX, this.height/2 + tlY, w, h);
     }
     
     private void drawMarks(Graphics g) {
