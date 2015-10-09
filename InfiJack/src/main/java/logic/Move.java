@@ -7,6 +7,12 @@ public class Move extends Point {
 
     private final Player player;
 
+    /**
+     * Move is a point that has an owner.
+     * @param x The x coordinate.
+     * @param y The y coordinate.
+     * @param player The player whose move this is.
+     */
     public Move(int x, int y, Player player) {
         super(x, y);
         this.player = player;

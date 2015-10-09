@@ -55,6 +55,11 @@ public class Point {
         return this.y;
     }
 
+    /**
+     * Returns a new point that is next to this, in the defined direction.
+     * @param direction Direction to move to.
+     * @return A moved point.
+     */
     public Point moved(Directions direction) {
         switch (direction) {
             case UP:

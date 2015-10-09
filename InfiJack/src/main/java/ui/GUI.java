@@ -25,6 +25,11 @@ public class GUI extends JFrame {
     private final int scale = 32;
     private final int size = scale;
 
+    /**
+     * The base game object that starts the GUI.
+     * 
+     * @param game The game object to be created.
+     */
     public GUI(Game game) {
         this.game = game;
         this.board = game.getBoard();
@@ -104,6 +109,9 @@ public class GUI extends JFrame {
         g.drawOval(this.width / 2 + tlX - 4, this.height / 2 + tlY - 4, size + 8, size + 8);
     }
 
+    /**
+     *  Sets a mark as the current player to the coordinate defined by camera.
+     */
     public void setMark() {
         this.game.setMark(this.camera.getX(), this.camera.getY());
         if (this.game.over()) {
@@ -112,6 +120,10 @@ public class GUI extends JFrame {
         }
     }
 
+    /**
+     *  Move the camera (aka the cursor) to the direction by one. 
+     * @param direction A cardinal direction.
+     */
     public void moveCursor(Directions direction) {
         Point p = this.camera.getPoint().moved(direction);
         if (this.board.getBounds().contains(p)) {

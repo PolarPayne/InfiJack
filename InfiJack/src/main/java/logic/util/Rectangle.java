@@ -9,6 +9,13 @@ public class Rectangle {
     private int x2;
     private int y2;
 
+    /**
+     * Rectangle in 2d space.
+     * @param x1 Top left x.
+     * @param y1 Top left y.
+     * @param x2 Bottom right x.
+     * @param y2 Bottom right y.
+     */
     public Rectangle(int x1, int y1, int x2, int y2) {
         this.x1 = x1;
         this.y1 = y1;
@@ -16,6 +23,11 @@ public class Rectangle {
         this.y2 = y2;
     }
 
+    /**
+     * Check if point is inside a rectangle.
+     * @param p Point to be checked.
+     * @return True if the point is inside this rectangle, otherwise false.
+     */
     public boolean contains(Point p) {
         if (p.getX() >= this.x1 && p.getX() <= this.x2) {
             if (p.getY() >= this.y1 && p.getY() <= this.y2) {
@@ -76,10 +88,18 @@ public class Rectangle {
         this.y2 = maxY + padding;
     }
 
+    /**
+     *
+     * @return Top left as a point.
+     */
     public Point getLeftTop() {
         return new Point(this.x1, this.y1);
     }
 
+    /**
+     *
+     * @return Bottom right as a point.
+     */
     public Point getRightBottom() {
         return new Point(this.x2, this.y2);
     }

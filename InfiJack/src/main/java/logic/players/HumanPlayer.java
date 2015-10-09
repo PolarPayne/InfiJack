@@ -5,7 +5,10 @@ import logic.Move;
 public class HumanPlayer implements Player {
     private final char mark;
     
-
+    /**
+     * Defines a player, each player also has a mark.
+     * @param mark A unique mark for a player.
+     */
     public HumanPlayer(char mark) {
         this.mark = mark;
     }

@@ -15,6 +15,11 @@ public class Game {
     private final Board board;
     private static final char[] marks = {'X', 'O'};
 
+    /**
+     * Handles the game logic.
+     * 
+     * @param players Amount of players.
+     */
     public Game(int players) {
         this.board = new Board(1);
         
@@ -29,6 +34,10 @@ public class Game {
         this.players = new ArrayDeque<>(playerList);
     }
 
+    /**
+     * Checks whether the game has ended or not. 
+     * @return true if the game is over, otherwise false
+     */
     public boolean over() {
         return false; //TODO implement game over checking
     }
@@ -38,19 +47,33 @@ public class Game {
         return this.board.toString();
     }
     
+    /**
+     * Peek who is gonna play next.
+     * @return Player who plays next.
+     */
     public Player nextPlayer() {
         return this.players.peekFirst();
     }
 
+    /**
+     * Places a mark on the (x, y) coordinate.
+     * @param x
+     * @param y
+     */
     public void setMark(int x, int y) {
         this.board.add(this.players.getFirst().move(x, y));
         this.players.addLast(this.players.removeFirst());
     }
-
+    
     public Board getBoard() {
         return this.board;
     }
     
+    /**
+     * Translate a players mark into a color.
+     * @param c Mark of the player.
+     * @return Color of the player, null otherwise.
+     */
     public static Color markToColor(char c) {
         switch (c) {
             case 'X':

@@ -9,6 +9,10 @@ public class KeyboardListener implements KeyListener {
     
     private final GUI ui;
 
+    /**
+     * A basic keyboard listener that checks for arrows and wasd input.
+     * @param ui The ui that needs to be controlled.
+     */
     public KeyboardListener(GUI ui) {
         this.ui = ui;
     }

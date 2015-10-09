@@ -11,12 +11,21 @@ public class Board {
     private final Rectangle bounds;
     private int padding;
 
+    /**
+     * Create a new "infinite" board with a padding.
+     * @param padding Defines the area around the outer moves, must be non-negative.
+     */
     public Board(int padding) {
         this.moves = new HashSet<>();
         this.bounds = new Rectangle(0, 0, 0, 0);
         this.padding = padding;
     }
 
+    /**
+     * Adds the move to the board, checking that it can actually be added there.
+     * @param move Move to be added.
+     * @throws Error If the move is invalid.
+     */
     public void add(Move move) {
         if (this.bounds.contains(move) && !this.moves.contains(move)) {
             this.moves.add(move);
