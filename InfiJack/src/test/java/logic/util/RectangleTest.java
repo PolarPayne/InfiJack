@@ -50,6 +50,16 @@ public class RectangleTest {
     }
     
     @Test
+    public void testSimplestResize() {
+        Rectangle instance = new Rectangle(0, 0, 0, 0);
+        Set<Point> ps = new HashSet<>();
+        ps.add(new Point(1, 1));
+        instance.resize(ps, 0);
+        assertEquals(new Point(1, 1), instance.getLeftTop());
+        assertEquals(new Point(1, 1), instance.getRightBottom());
+    }
+    
+    @Test
     public void testSimpleResize() {
         Rectangle instance = new Rectangle(0, 0, 0, 0);
         Set<Point> ps = new HashSet<>();
@@ -146,5 +156,37 @@ public class RectangleTest {
         Set<Point> ps = new HashSet<>();
         ps.add(new Point(0, 0));
         instance.resize(ps, -1);
+    }
+    
+    @Test
+    public void testNullPoints() {
+        Rectangle instance = new Rectangle(0, 0, 0, 0);
+        Set<Point> ps = null;
+        instance.resize(ps, 0);
+        assertEquals(new Point(0, 0), instance.getLeftTop());
+        assertEquals(new Point(0, 0), instance.getRightBottom());
+    }
+    
+    @Test
+    public void testNoPoints() {
+        Rectangle instance = new Rectangle(0, 0, 0, 0);
+        Set<Point> ps = new HashSet<>();
+        instance.resize(ps, 0);
+        assertEquals(new Point(0, 0), instance.getLeftTop());
+        assertEquals(new Point(0, 0), instance.getRightBottom());
+    }
+    
+    @Test
+    public void testZeroSize() {
+        Rectangle instance = new Rectangle(0, 0, 0, 0);
+        assertEquals(1, instance.getWidth());
+        assertEquals(1, instance.getHeight());
+    }
+    
+    @Test
+    public void testSize() {
+        Rectangle instance = new Rectangle(-5, -5, 5, 5);
+        assertEquals(11, instance.getWidth());
+        assertEquals(11, instance.getHeight());
     }
 }

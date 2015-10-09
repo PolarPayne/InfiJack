@@ -37,9 +37,11 @@
                 <configuration>
                 <targetClasses>
                     <param>logic.*</param>
+                    <param>ui.Camera</param>
                 </targetClasses>
                 <targetTests>
                     <param>logic.*</param>
+                    <param>ui.CameraTest</param>
                 </targetTests>
             </configuration>
             </plugin>

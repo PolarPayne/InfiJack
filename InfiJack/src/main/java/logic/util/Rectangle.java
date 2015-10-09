@@ -68,16 +68,16 @@ public class Rectangle {
         }
 
         for (Point p : points) {
-            if (p.getX() > maxX) {
+            if (p.getX() >= maxX) {
                 maxX = p.getX();
             }
-            if (p.getY() > maxY) {
+            if (p.getY() >= maxY) {
                 maxY = p.getY();
             }
-            if (p.getX() < minX) {
+            if (p.getX() <= minX) {
                 minX = p.getX();
             }
-            if (p.getY() < minY) {
+            if (p.getY() <= minY) {
                 minY = p.getY();
             }
         }
@@ -105,10 +105,10 @@ public class Rectangle {
     }
     
     public int getWidth() {
-        return this.x2 - this.x1;
+        return this.x2 - this.x1 + 1;
     }
     
     public int getHeight() {
-        return this.y2 - this.y1;
+        return this.y2 - this.y1 + 1;
     }
 }
