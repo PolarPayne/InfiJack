@@ -78,4 +78,13 @@ public class PointTest {
         Point instance = new Point(13, 42);
         assertEquals("x: 13, y: 42", instance.toString());
     }
+    
+    @Test
+    public void testPointMove() {
+        Point instance = new Point(13, 42);
+        assertEquals(new Point(13, 41), instance.moved(Directions.UP));
+        assertEquals(new Point(14, 42), instance.moved(Directions.RIGHT));
+        assertEquals(new Point(13, 43), instance.moved(Directions.DOWN));
+        assertEquals(new Point(12, 42), instance.moved(Directions.LEFT));
+    }
 }

@@ -70,7 +70,8 @@ public class Point {
                 return new Point(this.x, this.y+1);
             case LEFT:
                 return new Point(this.x-1, this.y);
+            default:
+                return null;
         }
-        return null;
     }
 }
