@@ -1,5 +1,6 @@
 package logic;
 
+import java.awt.Color;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -36,6 +37,10 @@ public class Game {
     public String toString() {
         return this.board.toString();
     }
+    
+    public Player nextPlayer() {
+        return this.players.peekFirst();
+    }
 
     public void setMark(int x, int y) {
         this.board.add(this.players.getFirst().move(x, y));
@@ -44,6 +49,16 @@ public class Game {
 
     public Board getBoard() {
         return this.board;
+    }
+    
+    public static Color markToColor(char c) {
+        switch (c) {
+            case 'X':
+                return Color.RED;
+            case 'O':
+                return Color.BLUE;
+        }
+        return null;
     }
 
 }

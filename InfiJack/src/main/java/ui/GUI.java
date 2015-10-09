@@ -1,6 +1,9 @@
 package ui;
 
+import java.awt.BasicStroke;
+import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import javax.swing.JFrame;
 import logic.Board;
 import logic.Game;
@@ -17,10 +20,10 @@ public class GUI extends JFrame {
     private final Camera camera;
 
     private final int width = 640;
-    private final int height = 480;
+    private final int height = 640;
 
     private final int scale = 32;
-    private final int size = 32;
+    private final int size = scale;
 
     public GUI(Game game) {
         this.game = game;
@@ -69,15 +72,20 @@ public class GUI extends JFrame {
         for (Point p : this.board.getMoves()) {
             Move m = (Move) p;
             Point pp = this.camera.worldToScreen(m);
-            int x = pp.getX() - size/2;
-            int y = pp.getY() - size/2;
+            int x = pp.getX() - size/2 + 2;
+            int y = pp.getY() - size/2 + 2;
             
+            g.setColor(Game.markToColor(m.getMark()));
             switch (m.getMark()) {
                 case 'X':
-                    g.drawRect(this.width/2 + x, this.height/2 + y, size, size);
+                    g.fillRect(this.width/2 + x, this.height/2 + y, size-4, size-4);
+                    g.setColor(Color.BLACK);
+                    g.drawRect(this.width/2 + x, this.height/2 + y, size-4, size-4);
                     break;
                 case 'O':
-                    g.drawOval(this.width/2 + x, this.height/2 + y, size, size);
+                    g.fillOval(this.width/2 + x, this.height/2 + y, size-4, size-4);
+                    g.setColor(Color.BLACK);
+                    g.drawOval(this.width/2 + x, this.height/2 + y, size-4, size-4);
                     break;
             }
         }
@@ -88,7 +96,11 @@ public class GUI extends JFrame {
         int s = size / 2;
         int tlX = p.getX() - s;
         int tlY = p.getY() - s;
-
+        
+        
+        g.setColor(Game.markToColor(this.game.nextPlayer().getMark()));
+        Graphics2D g2 = (Graphics2D) g;
+        g2.setStroke(new BasicStroke(2));
         g.drawOval(this.width / 2 + tlX - 4, this.height / 2 + tlY - 4, size + 8, size + 8);
     }
 

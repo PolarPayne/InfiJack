@@ -1,7 +1,6 @@
 package logic.players;
 
 import logic.Move;
-import ui.GUI;
 
 public interface Player {
 
