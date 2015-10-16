@@ -24,14 +24,14 @@ public class Board {
     /**
      * Adds the move to the board, checking that it can actually be added there.
      * @param move Move to be added.
-     * @throws Error If the move is invalid.
+     * @throws java.lang.Exception If the move is not valid.
      */
-    public void add(Move move) {
+    public void add(Move move) throws Exception {
         if (this.bounds.contains(move) && !this.moves.contains(move)) {
             this.moves.add(move);
             this.bounds.resize(this.moves, this.padding);
         } else {
-            throw new Error("Move must be unique, and inside the bounds.");
+            throw new Exception("Move must be unique, and inside the bounds.");
         }
     }
 

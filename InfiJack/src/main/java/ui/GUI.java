@@ -13,6 +13,9 @@ import logic.util.Point;
 import logic.util.Rectangle;
 import ui.listeners.KeyboardListener;
 
+/**
+ * The base game object that starts the GUI.
+ */
 public class GUI extends JFrame {
 
     private final Game game;
@@ -26,7 +29,6 @@ public class GUI extends JFrame {
     private final int size = scale;
 
     /**
-     * The base game object that starts the GUI.
      * 
      * @param game The game object to be created.
      */
@@ -80,16 +82,28 @@ public class GUI extends JFrame {
             int x = pp.getX() - size/2 + 2;
             int y = pp.getY() - size/2 + 2;
             
-            g.setColor(Game.markToColor(m.getMark()));
+            Color c = Game.markToColor(m.getMark());
+            
+            g.setColor(c);
             switch (m.getMark()) {
                 case 'X':
                     g.fillRect(this.width/2 + x, this.height/2 + y, size-4, size-4);
-                    g.setColor(Color.BLACK);
+                    g.setColor(c);
                     g.drawRect(this.width/2 + x, this.height/2 + y, size-4, size-4);
                     break;
                 case 'O':
                     g.fillOval(this.width/2 + x, this.height/2 + y, size-4, size-4);
-                    g.setColor(Color.BLACK);
+                    g.setColor(c);
+                    g.drawOval(this.width/2 + x, this.height/2 + y, size-4, size-4);
+                    break;
+                case 'Y':
+                    g.fillRect(this.width/2 + x, this.height/2 + y, size-4, size-4);
+                    g.setColor(c);
+                    g.drawRect(this.width/2 + x, this.height/2 + y, size-4, size-4);
+                    break;
+                case 'Z':
+                    g.fillOval(this.width/2 + x, this.height/2 + y, size-4, size-4);
+                    g.setColor(c);
                     g.drawOval(this.width/2 + x, this.height/2 + y, size-4, size-4);
                     break;
             }

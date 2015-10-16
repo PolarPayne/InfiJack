@@ -13,20 +13,20 @@ public class Game {
 
     private final Deque<Player> players;
     private final Board board;
-    private static final char[] marks = {'X', 'O'};
+    private static final char[] marks = {'X', 'O', 'Y', 'Z'};
 
     /**
      * Handles the game logic.
      * 
      * @param players Amount of players.
+     * @param padding Padding around the farthest moves.
      */
-    public Game(int players) {
-        this.board = new Board(1);
+    public Game(int players, int padding) {
+        this.board = new Board(padding);
         
         List<Player> playerList = new ArrayList<>();
         for (int i = 0; i < players; i++) {
             playerList.add(new HumanPlayer(Game.marks[i]));
-            this.board.setPadding(this.board.getPadding() + 1);
         }
         //Deque cannot be shuffled
         Collections.shuffle(playerList);
@@ -61,8 +61,12 @@ public class Game {
      * @param y
      */
     public void setMark(int x, int y) {
-        this.board.add(this.players.getFirst().move(x, y));
-        this.players.addLast(this.players.removeFirst());
+        try {
+            this.board.add(this.players.getFirst().move(x, y));
+            this.players.addLast(this.players.removeFirst());
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
     }
     
     public Board getBoard() {
@@ -80,6 +84,10 @@ public class Game {
                 return Color.RED;
             case 'O':
                 return Color.BLUE;
+            case 'Y':
+                return Color.GREEN;
+            case 'Z':
+                return Color.ORANGE;
         }
         return null;
     }
