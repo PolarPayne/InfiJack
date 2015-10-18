@@ -29,7 +29,7 @@ public class GUI extends JFrame {
     private final int size = scale;
 
     /**
-     * 
+     *
      * @param game The game object to be created.
      */
     public GUI(Game game) {
@@ -79,32 +79,32 @@ public class GUI extends JFrame {
         for (Point p : this.board.getMoves()) {
             Move m = (Move) p;
             Point pp = this.camera.worldToScreen(m);
-            int x = pp.getX() - size/2 + 2;
-            int y = pp.getY() - size/2 + 2;
-            
+            int x = pp.getX() - size / 2 + 2;
+            int y = pp.getY() - size / 2 + 2;
+
             Color c = Game.markToColor(m.getMark());
-            
+
             g.setColor(c);
             switch (m.getMark()) {
                 case 'X':
-                    g.fillRect(this.width/2 + x, this.height/2 + y, size-4, size-4);
+                    g.fillRect(this.width / 2 + x, this.height / 2 + y, size - 4, size - 4);
                     g.setColor(c);
-                    g.drawRect(this.width/2 + x, this.height/2 + y, size-4, size-4);
+                    g.drawRect(this.width / 2 + x, this.height / 2 + y, size - 4, size - 4);
                     break;
                 case 'O':
-                    g.fillOval(this.width/2 + x, this.height/2 + y, size-4, size-4);
+                    g.fillOval(this.width / 2 + x, this.height / 2 + y, size - 4, size - 4);
                     g.setColor(c);
-                    g.drawOval(this.width/2 + x, this.height/2 + y, size-4, size-4);
+                    g.drawOval(this.width / 2 + x, this.height / 2 + y, size - 4, size - 4);
                     break;
                 case 'Y':
-                    g.fillRect(this.width/2 + x, this.height/2 + y, size-4, size-4);
+                    g.fillRect(this.width / 2 + x, this.height / 2 + y, size - 4, size - 4);
                     g.setColor(c);
-                    g.drawRect(this.width/2 + x, this.height/2 + y, size-4, size-4);
+                    g.drawRect(this.width / 2 + x, this.height / 2 + y, size - 4, size - 4);
                     break;
                 case 'Z':
-                    g.fillOval(this.width/2 + x, this.height/2 + y, size-4, size-4);
+                    g.fillOval(this.width / 2 + x, this.height / 2 + y, size - 4, size - 4);
                     g.setColor(c);
-                    g.drawOval(this.width/2 + x, this.height/2 + y, size-4, size-4);
+                    g.drawOval(this.width / 2 + x, this.height / 2 + y, size - 4, size - 4);
                     break;
             }
         }
@@ -115,8 +115,7 @@ public class GUI extends JFrame {
         int s = size / 2;
         int tlX = p.getX() - s;
         int tlY = p.getY() - s;
-        
-        
+
         g.setColor(Game.markToColor(this.game.nextPlayer().getMark()));
         Graphics2D g2 = (Graphics2D) g;
         g2.setStroke(new BasicStroke(2));
@@ -124,7 +123,7 @@ public class GUI extends JFrame {
     }
 
     /**
-     *  Sets a mark as the current player to the coordinate defined by camera.
+     * Sets a mark as the current player to the coordinate defined by camera.
      */
     public void setMark() {
         this.game.setMark(this.camera.getX(), this.camera.getY());
@@ -135,7 +134,8 @@ public class GUI extends JFrame {
     }
 
     /**
-     *  Move the camera (aka the cursor) to the direction by one. 
+     * Move the camera (aka the cursor) to the direction by one.
+     *
      * @param direction A cardinal direction.
      */
     public void moveCursor(Directions direction) {

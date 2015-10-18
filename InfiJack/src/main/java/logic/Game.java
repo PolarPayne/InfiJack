@@ -13,7 +13,7 @@ public class Game {
 
     private final Deque<Player> players;
     private final Board board;
-    private static final char[] marks = {'X', 'O', 'Y', 'Z'};
+    private static final char[] MARKS = {'X', 'O', 'Y', 'Z'};
 
     /**
      * Handles the game logic.
@@ -26,7 +26,7 @@ public class Game {
         
         List<Player> playerList = new ArrayList<>();
         for (int i = 0; i < players; i++) {
-            playerList.add(new HumanPlayer(Game.marks[i]));
+            playerList.add(new HumanPlayer(Game.MARKS[i]));
         }
         //Deque cannot be shuffled
         Collections.shuffle(playerList);

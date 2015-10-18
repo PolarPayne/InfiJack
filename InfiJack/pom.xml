@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>org.remming</groupId>
+    <groupId>org.remming.infijack</groupId>
     <artifactId>InfiJack</artifactId>
     <version>0.1</version>
     <packaging>jar</packaging>
@@ -30,20 +30,57 @@
                 </configuration>
                 <version>3.2</version>
             </plugin>
+            
             <plugin>
                 <groupId>org.pitest</groupId>
                 <artifactId>pitest-maven</artifactId>
                 <version>1.1.4</version>
                 <configuration>
-                <targetClasses>
-                    <param>logic.*</param>
-                    <param>ui.Camera</param>
-                </targetClasses>
-                <targetTests>
-                    <param>logic.*</param>
-                    <param>ui.CameraTest</param>
-                </targetTests>
-            </configuration>
+                    <targetClasses>
+                        <param>logic.*</param>
+                        <param>ui.Camera</param>
+                    </targetClasses>
+                    <targetTests>
+                        <param>logic.*</param>
+                        <param>ui.CameraTest</param>
+                    </targetTests>
+                </configuration>
+            </plugin>
+            
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-checkstyle-plugin</artifactId>
+                <version>2.13</version>
+                <configuration>
+                    <configLocation>checkstyle.xml</configLocation>
+                </configuration>
+            </plugin>
+            
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jxr-plugin</artifactId>
+                <version>2.4</version>
+            </plugin>
+            
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-shade-plugin</artifactId>
+                <version>2.2</version>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>shade</goal>
+                        </goals>
+                        <configuration>
+                            <transformers>
+                                <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                                    <mainClass>org.remming.infijack.Main</mainClass>
+                                </transformer>
+                            </transformers>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>

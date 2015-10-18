@@ -13,7 +13,9 @@ public class Board {
 
     /**
      * Create a new "infinite" board with a padding.
-     * @param padding Defines the area around the outer moves, must be non-negative.
+     *
+     * @param padding Defines the area around the outer moves, must be
+     * non-negative.
      */
     public Board(int padding) {
         this.moves = new HashSet<>();
@@ -23,6 +25,7 @@ public class Board {
 
     /**
      * Adds the move to the board, checking that it can actually be added there.
+     *
      * @param move Move to be added.
      * @throws java.lang.Exception If the move is not valid.
      */
@@ -50,8 +53,10 @@ public class Board {
         sb.append("bounds:\n\t")
                 .append(this.bounds.getLeftTop().toString()).append("\n\t")
                 .append(this.bounds.getRightBottom().toString());
-        
-        if (!this.moves.isEmpty()) sb.append("\n").append("moves:");
+
+        if (!this.moves.isEmpty()) {
+            sb.append("\n").append("moves:");
+        }
         for (Point i : this.moves) {
             sb.append("\n\t").append(i);
         }
@@ -61,7 +66,7 @@ public class Board {
     public Set<Point> getMoves() {
         return this.moves;
     }
-    
+
     public Rectangle getBounds() {
         return this.bounds;
     }

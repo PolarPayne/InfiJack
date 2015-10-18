@@ -7,7 +7,7 @@ public class Point {
 
     /**
      * Immutable point in 2D space.
-     * 
+     *
      * @param x X coordinate
      * @param y Y coordinate
      */
@@ -41,7 +41,7 @@ public class Point {
         }
         return true;
     }
-    
+
     @Override
     public String toString() {
         return "x: " + this.x + ", y: " + this.y;
@@ -57,19 +57,20 @@ public class Point {
 
     /**
      * Returns a new point that is next to this, in the defined direction.
+     *
      * @param direction Direction to move to.
      * @return A moved point.
      */
     public Point moved(Directions direction) {
         switch (direction) {
             case UP:
-                return new Point(this.x, this.y-1);
+                return new Point(this.x, this.y - 1);
             case RIGHT:
-                return new Point(this.x+1, this.y);
+                return new Point(this.x + 1, this.y);
             case DOWN:
-                return new Point(this.x, this.y+1);
+                return new Point(this.x, this.y + 1);
             case LEFT:
-                return new Point(this.x-1, this.y);
+                return new Point(this.x - 1, this.y);
             default:
                 return null;
         }
