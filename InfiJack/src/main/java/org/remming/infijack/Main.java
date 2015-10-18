@@ -11,12 +11,15 @@ public class Main {
         }
         
         int players = 2;
-        int padding = 1;
+        int padding = 3;
         try {
             if (args.length >= 1) {
                 players = Integer.parseInt(args[0]);
                 if (players < 2) {
                     players = 2;
+                }
+                if (players > 4) {
+                    players = 4;
                 }
             }
             if (args.length >= 2) {

@@ -2,6 +2,9 @@ package logic.players;
 
 import logic.Move;
 
+/**
+ * A player that is controlled by a human. Mainly used to identify a player.
+ */
 public class HumanPlayer implements Player {
     private final char mark;
     

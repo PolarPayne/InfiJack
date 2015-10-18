@@ -14,7 +14,7 @@ import logic.util.Rectangle;
 import ui.listeners.KeyboardListener;
 
 /**
- * The base game object that starts the GUI.
+ * The object that starts the GUI and handles communication with the game.
  */
 public class GUI extends JFrame {
 

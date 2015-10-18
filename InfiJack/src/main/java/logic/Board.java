@@ -5,6 +5,9 @@ import java.util.Set;
 import logic.util.Point;
 import logic.util.Rectangle;
 
+/**
+ * Board keeps track of all moves, and the bounds of the playing board.
+ */
 public class Board {
 
     private final Set<Point> moves;

@@ -2,6 +2,9 @@ package logic.players;
 
 import logic.Move;
 
+/**
+ * Interface for all players, AIs should also extend this.
+ */
 public interface Player {
 
     /**

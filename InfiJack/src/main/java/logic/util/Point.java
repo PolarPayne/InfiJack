@@ -1,5 +1,8 @@
 package logic.util;
 
+/**
+ * An immutable object with x and y coordinate.
+ */
 public class Point {
 
     private final int x;

@@ -1,5 +1,8 @@
 package logic.util;
 
+/**
+ * A cardinal direction, aka up/left/down/right.
+ */
 public enum Directions {
 
     /**

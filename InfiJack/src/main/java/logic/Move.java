@@ -3,6 +3,9 @@ package logic;
 import logic.players.Player;
 import logic.util.Point;
 
+/**
+ * A Point that has an owner.
+ */
 public class Move extends Point {
 
     private final Player player;

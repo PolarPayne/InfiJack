@@ -9,6 +9,9 @@ import java.util.List;
 import logic.players.HumanPlayer;
 import logic.players.Player;
 
+/**
+ * Game keeps track of the overall game state and manages the game.
+ */
 public class Game {
 
     private final Deque<Player> players;

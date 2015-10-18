@@ -2,6 +2,10 @@ package logic.util;
 
 import java.util.Set;
 
+/**
+ * Rectangle that is defined by its top left and bottom right corners.
+ * Can be resized to fit a set of points.
+ */
 public class Rectangle {
 
     private int x1;

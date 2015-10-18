@@ -3,6 +3,9 @@ package ui;
 import logic.util.Directions;
 import logic.util.Point;
 
+/**
+ * Camera can be used to scale and position things correctly on the stage.
+ */
 public class Camera {
     private int x;
     private int y;

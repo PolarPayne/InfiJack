@@ -5,6 +5,9 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import ui.GUI;
 
+/**
+ * Listener for wasd, arrows, space and esc. Relays everything to a gui.
+ */
 public class KeyboardListener implements KeyListener {
     
     private final GUI ui;
